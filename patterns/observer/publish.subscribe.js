@@ -7,8 +7,8 @@ class PublishSubscribe {
         if (!this.subscribers[event]) {
             this.subscribers[event] = [];
         }
-
         this.subscribers[event].push(callback);
+        console.log(this.subscribers);
     }
 
     publish(event, data) {
@@ -26,4 +26,6 @@ publish.subscribe('hello', (data) => {
     console.log(' я подписался на hello ' + data)
 })
 
+publish.subscribe('by', () => console.log('пока без даты'))
 publish.publish('hello', 123)
+publish.publish('by')

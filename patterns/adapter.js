@@ -1,20 +1,33 @@
 class Adapter {
-    constructor(card) {
-        this.card = card
+    constructor(iphone) {
+        this.iphone = iphone;
     }
 
-    connectCard() {
-        this.card.connect()
-    }
-}
-
-class USB {
-    connectUSB() {
-        console.log('connect to USB');
+    connectUsb() {
+        this.iphone.connect();
     }
 }
 
-const card = new Adapter(new USB())
+class Iphone {
+    connect() {
+        console.log('connect to Iphone');
+    }
+}
 
-card.connectCard()
+class Samsung {
+    connectUsb() {
+        console.log('connect to Samsung');
+    }
+}
+
+const iphone = new Iphone();
+const samsung = new Samsung();
+const samsungWithAdapter = new Adapter(new Iphone())
+
+samsungWithAdapter.connectUsb()
+
+iphone.connect();
+samsung.connectUsb();
+
+
 

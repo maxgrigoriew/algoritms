@@ -16,8 +16,11 @@ class Builder {
 
 }
 
-const car = new Builder('audy').setEngine('v8')
+const car = new Builder('audy')
+    .setEngine('v8')
+    .setDoors(8)
 
+console.log(car)
 
 //
 

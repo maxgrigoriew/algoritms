@@ -11,4 +11,4 @@ function handleIntersections(intersectionList) {
 const observer = new IntersectionObserver(handleIntersections);
 
 // Начало наблюдения за целевым элементом
-observer.observe(footer);
+// observer.observe(footer);
