@@ -45,7 +45,6 @@ function foo(arr) {
 }
 
 function calcSalary(source) {
-  debugger
   let result = 0;
 
   if (Array.isArray(source)) {

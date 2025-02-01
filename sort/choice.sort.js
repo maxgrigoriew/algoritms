@@ -2,7 +2,6 @@ const arr = [ 10, 4, 6, 3, 8, 2, 1 ];
 
 function foo(arr) {
     for (let i = 0; i < arr.length; i++) {
-
         let min = i;
 
         for (let j = i + 1; j < arr.length; j++) {
@@ -11,7 +10,8 @@ function foo(arr) {
             }
         }
 
-        [ arr[i], arr[min] ] = [ arr[min], arr[i] ];
+        if (min !== i)
+            [ arr[i], arr[min] ] = [ arr[min], arr[i] ];
 
     }
 
