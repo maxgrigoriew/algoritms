@@ -1,21 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    />
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tooltip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+        }
+
+        .tooltip {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .tooltip .tooltip-text {
+            position: absolute;
+            background-color: #555;
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltip-text::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 5px;
+        }
+
+        .tooltip.open .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
-    <button class="button">button</button>
-    <div class="container" style="min-height: 150vh"></div>
-
-    <div class="footer">`console.log`</div>
+<div class="tooltip" data-tooltip="Это подсказка!!">
+    Наведи на меня
 </div>
-<!--<script src="patterns/observer/intersection.observer.js"></script>-->
-<script src="patterns/observer/mutation.observer.js"></script>
-</body>
-</html>
+
+<div class="tooltip" data-tooltip="Это другая подсказка!!">
+    Наведи на меня
+</div>
+
+<script>
+    document.querySelectorAll('.tooltip').forEach((tooltip) => {
+        const tooltipText = document.createElement('div');
+        tooltipText.classList.add('tooltip-text');
+        tooltipText.innerText = tooltip.getAttribute('data-tooltip');
+        tooltip.appendChild(tooltipText);
+
+        tooltip.addEventListener('mouseover', (event) => {
+            tooltip.classList.add('open');
+            const rect = tooltip.getBoundingClientRect();
+            const tooltipWidth = tooltipText.offsetWidth;
+            const tooltipHeight = tooltipText.offsetHeight;
+            console.log(rect);
+            console.log(tooltipWidth, tooltipHeight);
+
+
+            // Рассчитываем положение tooltip
+            let top = rect.top - tooltipHeight - 10;
+            let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+
+            if (top < 0) {
+                top = rect.bottom + 10;
+                tooltipText.style.setProperty('--arrow-direction', 'up');
+            } else {
+                tooltipText.style.setProperty('--arrow-direction', 'down');
+            }
+            if (left < 0) {
+                left = 10;
+            };
+        })
+
+        tooltip.addEventListener('mouseleave', (event) => {
+            tooltip.classList.remove('open');
+        })
+    })
+</script>

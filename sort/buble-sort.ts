@@ -1,7 +1,7 @@
-let arr = [5, 3, 2, 6, 8,]
+let arrNumbers = [5, 3, 2, 6, 8,]
 
 
-function sort(arr: number[]) {
+function sortArr(arr: number[]) {
 
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -14,4 +14,4 @@ function sort(arr: number[]) {
   return arr
 }
 
-console.log(sort(arr))
+console.log(sortArr(arrNumbers))
