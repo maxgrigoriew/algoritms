@@ -1,0 +1,28 @@
+ul,
+li {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+.todo-list li:only-of-type {
+	margin-bottom: o;
+}
+
+.tabs__top {
+	display: flex;
+}
+
+.tabs__bottom {
+	display: flex;
+}
+
+.active {
+	background-color: blue !important;
+}
+
+.delegation .wrapper {
+	padding: 10px;
+	background: antiquewhite;
+}

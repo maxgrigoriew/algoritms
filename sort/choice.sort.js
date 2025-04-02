@@ -18,4 +18,4 @@ function foo(arr) {
     return arr;
 }
 
-console.log(foo(arr));
+
